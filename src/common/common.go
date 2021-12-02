@@ -16,11 +16,15 @@ func FailOnErrors(params ...error) {
 	}
 }
 
-func GetFileLines(day int) []string {
+func GetFileContent(day int) string {
 	fileLocation := fmt.Sprintf("./day%d/input.txt", day)
 
 	data, err := os.ReadFile(fileLocation)
 	FailOnErrors(err)
 
-	return strings.Split(string(data), "\r\n")
+	return string(data)
+}
+
+func SplitNewLine(s string) []string {
+	return strings.Split(s, "\r\n")
 }

@@ -8,11 +8,11 @@ import (
 )
 
 func Run() {
-	lines := common.GetFileLines(1)
-	input := toIntArray(lines)
+	raw := common.GetFileContent(1)
+	input := toIntArray(common.SplitNewLine(raw))
 
-	partOne(input)
-	partTwo(input)
+	fmt.Println(partOne(input))
+	fmt.Println(partTwo(input))
 }
 
 func toIntArray(strArr []string) []int {
@@ -25,17 +25,17 @@ func toIntArray(strArr []string) []int {
 	return intArr
 }
 
-func partOne(input []int) {
+func partOne(input []int) int {
 	countIncreased := 0
 	for i := 1; i < len(input); i++ {
 		if input[i-1] < input[i] {
 			countIncreased++
 		}
 	}
-	fmt.Println(countIncreased)
+	return countIncreased
 }
 
-func partTwo(input []int) {
+func partTwo(input []int) int {
 	countIncreased := 0
 	for i := 3; i < len(input); i++ {
 		a, b, c, d := input[i-3], input[i-2], input[i-1], input[i]
@@ -45,5 +45,5 @@ func partTwo(input []int) {
 			countIncreased++
 		}
 	}
-	fmt.Println(countIncreased)
+	return countIncreased
 }
