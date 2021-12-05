@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"strconv"
+	"time"
 
 	"github.com/yacinelakel/aoc-2021/common"
 )
@@ -15,6 +16,7 @@ func Run() {
 }
 
 func partOne(lines []string) int {
+	defer common.TimeTrack(time.Now(), "part one")
 	onesMap := make(map[int]int)
 
 	for i := 0; i < len(lines); i++ {
@@ -38,6 +40,7 @@ func partOne(lines []string) int {
 }
 
 func partTwo(lines []string) int {
+	defer common.TimeTrack(time.Now(), "part two")
 	oxy := applyCriteria(lines[:], func(list0, list1 []string) []string {
 		if len(list1) >= len(list0) {
 			return list1
