@@ -17,22 +17,21 @@ func main() {
 	dayArg, err := strconv.Atoi(os.Args[1])
 	common.FailOnErrors(err)
 
-	runDay(dayArg)()
+	getDayFunc(dayArg)()
 }
 
-func runDay(day int) func() {
-	switch day {
-	case 1:
-		return day1.Run
-	case 2:
-		return day2.Run
-	case 3:
-		return day3.Run
-	case 4:
-		return day4.Run
-	case 5:
-		return day5.Run
-	default:
-		return (func() { fmt.Printf("No runner for day %d", day) })
+func getDayFunc(day int) func() {
+	dayMap := map[int]func(){
+		1: day1.Run,
+		2: day2.Run,
+		3: day3.Run,
+		4: day4.Run,
+		5: day5.Run,
+	}
+
+	if runner, ok := dayMap[day]; ok {
+		return runner
+	} else {
+		return func() { fmt.Printf("Day %d not implemented", day) }
 	}
 }

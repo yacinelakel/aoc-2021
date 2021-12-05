@@ -2,27 +2,14 @@ package day1
 
 import (
 	"fmt"
-	"strconv"
 
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
 func Run() {
-	raw := common.GetFileContent(1)
-	input := toIntArray(common.SplitNewLine(raw))
-
+	input := common.SliceAtoi((common.SplitNewLine(common.GetFileContent(1))))
 	fmt.Println(partOne(input))
 	fmt.Println(partTwo(input))
-}
-
-func toIntArray(strArr []string) []int {
-	var intArr = make([]int, len(strArr))
-	for i := range intArr {
-		d, e := strconv.Atoi(strArr[i])
-		common.FailOnErrors(e)
-		intArr[i] = d
-	}
-	return intArr
 }
 
 func partOne(input []int) int {
