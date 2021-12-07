@@ -12,6 +12,7 @@ import (
 	"github.com/yacinelakel/aoc-2021/day4"
 	"github.com/yacinelakel/aoc-2021/day5"
 	"github.com/yacinelakel/aoc-2021/day6"
+	"github.com/yacinelakel/aoc-2021/day7"
 )
 
 func main() {
@@ -29,6 +30,7 @@ func getDayFunc(day int) func() {
 		4: day4.Run,
 		5: day5.Run,
 		6: day6.Run,
+		7: day7.Run,
 	}
 
 	if runner, ok := dayMap[day]; ok {
