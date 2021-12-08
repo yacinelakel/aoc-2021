@@ -21,10 +21,10 @@ func Run() {
 			fuel1 += d
 			fuel2 += d * (d + 1) / 2
 		}
-		if minFuel1 > fuel1 {
+		switch {
+		case minFuel1 > fuel1:
 			minFuel1 = fuel1
-		}
-		if minFuel2 > fuel2 {
+		case minFuel2 > fuel2:
 			minFuel2 = fuel2
 		}
 	}
