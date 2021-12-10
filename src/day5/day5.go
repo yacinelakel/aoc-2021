@@ -17,8 +17,8 @@ type seg struct {
 	p2 pos
 }
 
-func Run() {
-	input := common.SplitNewLine(common.GetFileContent(5))
+func Run(raw string) {
+	input := common.SplitNewLine(raw)
 	fmt.Println(solve(parseInput(input)))
 }
 

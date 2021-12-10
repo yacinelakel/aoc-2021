@@ -8,8 +8,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	input := common.SplitNewLine(common.GetFileContent(10))
+func Run(raw string) {
+	input := common.SplitNewLine(raw)
 	fmt.Println(solve(input))
 }
 
@@ -18,7 +18,7 @@ func solve(lines []string) (int, int) {
 	scores := []int{}
 	for _, line := range lines {
 		var s stack = []string{}
-		isValid := true
+		valid := true
 		for _, p := range strings.Split(line, "") {
 			if strings.Contains(OPEN_PARENS, p) {
 				s.push(p)
@@ -32,11 +32,11 @@ func solve(lines []string) (int, int) {
 					}
 				}
 				partOne += ERROR_SCORE_MAP[p]
-				isValid = false
+				valid = false
 				break
 			}
 		}
-		if isValid {
+		if valid {
 			score := 0
 			for !s.empty() {
 				score = (score * 5) + CLOSE_SCORE_MAP[s.pop()]

@@ -19,6 +19,10 @@ import (
 )
 
 func main() {
+	if len(os.Args) <= 1 {
+		fmt.Println("Missing day argument")
+		return
+	}
 	dayArg, err := strconv.Atoi(os.Args[1])
 	common.FailOnErrors(err)
 
@@ -26,7 +30,7 @@ func main() {
 }
 
 func getDayFunc(day int) func() {
-	dayMap := map[int]func(){
+	dayMap := map[int]func(string){
 		1:  day1.Run,
 		2:  day2.Run,
 		3:  day3.Run,
@@ -40,7 +44,7 @@ func getDayFunc(day int) func() {
 	}
 
 	if runner, ok := dayMap[day]; ok {
-		return runner
+		return func() { runner(common.GetFileContent(day)) }
 	} else {
 		return func() { fmt.Printf("Day %d not implemented", day) }
 	}

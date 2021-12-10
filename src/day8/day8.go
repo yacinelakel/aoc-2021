@@ -8,8 +8,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	input := common.SplitNewLine(common.GetFileContent(8))
+func Run(raw string) {
+	input := common.SplitNewLine(raw)
 	parsed := parse(&input)
 	fmt.Println(partOne(parsed), partTwo(parsed))
 }

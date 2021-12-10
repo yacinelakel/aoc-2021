@@ -6,10 +6,9 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	input := common.SliceAtoi((common.SplitNewLine(common.GetFileContent(1))))
-	fmt.Println(partOne(input))
-	fmt.Println(partTwo(input))
+func Run(raw string) {
+	input := common.SliceAtoi((common.SplitNewLine(raw)))
+	fmt.Println(partOne(input), partTwo(input))
 }
 
 func partOne(input []int) int {

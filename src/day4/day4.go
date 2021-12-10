@@ -8,8 +8,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	input := common.SplitNewLine(common.GetFileContent(4))
+func Run(raw string) {
+	input := common.SplitNewLine(raw)
 	numList, boards := parseInput(input)
 	fmt.Println(solve(numList, boards))
 }

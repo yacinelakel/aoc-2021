@@ -8,10 +8,9 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	lines := common.SplitNewLine(common.GetFileContent(2))
-	fmt.Println(partOne(lines))
-	fmt.Println(partTwo(lines))
+func Run(raw string) {
+	lines := common.SplitNewLine(raw)
+	fmt.Println(partOne(lines), partTwo(lines))
 }
 
 type pos struct {

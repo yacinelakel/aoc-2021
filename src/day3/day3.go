@@ -4,19 +4,16 @@ import (
 	"fmt"
 	"math"
 	"strconv"
-	"time"
 
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	lines := common.SplitNewLine(common.GetFileContent(3))
-	fmt.Println(partOne(lines))
-	fmt.Println(partTwo(lines))
+func Run(raw string) {
+	lines := common.SplitNewLine(raw)
+	fmt.Println(partOne(lines), partTwo(lines))
 }
 
 func partOne(lines []string) int {
-	defer common.TimeTrack(time.Now(), "part one")
 	onesMap := make(map[int]int)
 
 	for i := 0; i < len(lines); i++ {
@@ -40,7 +37,6 @@ func partOne(lines []string) int {
 }
 
 func partTwo(lines []string) int {
-	defer common.TimeTrack(time.Now(), "part two")
 	oxy := applyCriteria(lines[:], func(list0, list1 []string) []string {
 		if len(list1) >= len(list0) {
 			return list1

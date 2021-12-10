@@ -4,15 +4,13 @@ import (
 	"fmt"
 	"math/big"
 	"strings"
-	"time"
 
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run() {
-	fish := common.SliceAtoi(strings.Split(common.GetFileContent(6), ","))
+func Run(raw string) {
+	fish := common.SliceAtoi(strings.Split(raw, ","))
 	mem := map[int]*big.Int{}
-	defer common.TimeTrack(time.Now(), "Day 6")
 	fmt.Println(solve(80, fish, &mem), solve(256, fish, &mem))
 }
 
