@@ -7,6 +7,7 @@ import (
 
 	"github.com/yacinelakel/aoc-2021/common"
 	"github.com/yacinelakel/aoc-2021/day1"
+	"github.com/yacinelakel/aoc-2021/day10"
 	"github.com/yacinelakel/aoc-2021/day2"
 	"github.com/yacinelakel/aoc-2021/day3"
 	"github.com/yacinelakel/aoc-2021/day4"
@@ -26,15 +27,16 @@ func main() {
 
 func getDayFunc(day int) func() {
 	dayMap := map[int]func(){
-		1: day1.Run,
-		2: day2.Run,
-		3: day3.Run,
-		4: day4.Run,
-		5: day5.Run,
-		6: day6.Run,
-		7: day7.Run,
-		8: day8.Run,
-		9: day9.Run,
+		1:  day1.Run,
+		2:  day2.Run,
+		3:  day3.Run,
+		4:  day4.Run,
+		5:  day5.Run,
+		6:  day6.Run,
+		7:  day7.Run,
+		8:  day8.Run,
+		9:  day9.Run,
+		10: day10.Run,
 	}
 
 	if runner, ok := dayMap[day]; ok {
