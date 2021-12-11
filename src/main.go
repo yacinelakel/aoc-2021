@@ -18,34 +18,32 @@ import (
 	"github.com/yacinelakel/aoc-2021/day9"
 )
 
+var DayRunners = map[int]func([]string){
+	1:  day1.Run,
+	2:  day2.Run,
+	3:  day3.Run,
+	4:  day4.Run,
+	5:  day5.Run,
+	6:  day6.Run,
+	7:  day7.Run,
+	8:  day8.Run,
+	9:  day9.Run,
+	10: day10.Run,
+}
+
 func main() {
+
 	if len(os.Args) <= 1 {
 		fmt.Println("Missing day argument")
 		return
 	}
+
 	dayArg, err := strconv.Atoi(os.Args[1])
 	common.FailOnErrors(err)
 
-	getDayFunc(dayArg)()
-}
-
-func getDayFunc(day int) func() {
-	dayMap := map[int]func(string){
-		1:  day1.Run,
-		2:  day2.Run,
-		3:  day3.Run,
-		4:  day4.Run,
-		5:  day5.Run,
-		6:  day6.Run,
-		7:  day7.Run,
-		8:  day8.Run,
-		9:  day9.Run,
-		10: day10.Run,
-	}
-
-	if runner, ok := dayMap[day]; ok {
-		return func() { runner(common.GetFileContent(day)) }
+	if runner, ok := DayRunners[dayArg]; ok {
+		runner(common.SplitNewLine(common.GetFileContent(dayArg)))
 	} else {
-		return func() { fmt.Printf("Day %d not implemented", day) }
+		fmt.Printf("Day %d not implemented", dayArg)
 	}
 }

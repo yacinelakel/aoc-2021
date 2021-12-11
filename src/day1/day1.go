@@ -6,8 +6,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	input := common.SliceAtoi((common.SplitNewLine(raw)))
+func Run(lines []string) {
+	input := common.SliceAtoi(lines)
 	fmt.Println(partOne(input), partTwo(input))
 }
 

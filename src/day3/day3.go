@@ -4,12 +4,9 @@ import (
 	"fmt"
 	"math"
 	"strconv"
-
-	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	lines := common.SplitNewLine(raw)
+func Run(lines []string) {
 	fmt.Println(partOne(lines), partTwo(lines))
 }
 

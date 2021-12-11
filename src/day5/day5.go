@@ -17,9 +17,8 @@ type seg struct {
 	p2 pos
 }
 
-func Run(raw string) {
-	input := common.SplitNewLine(raw)
-	fmt.Println(solve(parseInput(input)))
+func Run(lines []string) {
+	fmt.Println(solve(parse(lines)))
 }
 
 func solve(segs []seg) (int, int) {
@@ -62,7 +61,7 @@ func move(a, b int) int {
 	return a
 }
 
-func parseInput(lines []string) []seg {
+func parse(lines []string) []seg {
 	segs := []seg{}
 	for _, l := range lines {
 		re := regexp.MustCompile(`(\d+),(\d+) -> (\d+),(\d+)`)

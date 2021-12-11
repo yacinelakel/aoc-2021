@@ -4,13 +4,10 @@ import (
 	"fmt"
 	"math"
 	"regexp"
-
-	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	input := common.SplitNewLine(raw)
-	parsed := parse(&input)
+func Run(lines []string) {
+	parsed := parse(&lines)
 	fmt.Println(partOne(parsed), partTwo(parsed))
 }
 

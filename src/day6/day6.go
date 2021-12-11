@@ -8,8 +8,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	fish := common.SliceAtoi(strings.Split(raw, ","))
+func Run(lines []string) {
+	fish := common.SliceAtoi(strings.Split(lines[0], ","))
 	mem := map[int]*big.Int{}
 	fmt.Println(solve(80, fish, &mem), solve(256, fish, &mem))
 }

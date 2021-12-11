@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"sort"
 	"strconv"
-
-	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	board := parse(common.SplitNewLine(raw))
+func Run(lines []string) {
+	board := parse(lines)
 	fmt.Println(solve(board))
 }
 
@@ -36,12 +34,6 @@ func solve(board [][]int) (int, int) {
 		partTwo *= basins[i]
 	}
 	return partOne, partTwo
-}
-
-type pos struct {
-	v int
-	i int
-	j int
 }
 
 func bfs(p pos, board [][]int) int {
@@ -91,4 +83,10 @@ func parse(lines []string) [][]int {
 		board = append(board, row)
 	}
 	return board
+}
+
+type pos struct {
+	v int
+	i int
+	j int
 }

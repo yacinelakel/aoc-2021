@@ -8,9 +8,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	input := common.SplitNewLine(raw)
-	numList, boards := parseInput(input)
+func Run(lines []string) {
+	numList, boards := parse(lines)
 	fmt.Println(solve(numList, boards))
 }
 
@@ -78,7 +77,7 @@ func findNumber(board [][]int, num int) (pos, error) {
 	return pos{}, errors.New("not found")
 }
 
-func parseInput(input []string) ([]int, [][][]int) {
+func parse(input []string) ([]int, [][][]int) {
 	lines := input
 	numList := common.SliceAtoi(strings.Split(lines[0], ","))
 	boards := [][][]int{}

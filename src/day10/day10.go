@@ -4,49 +4,41 @@ import (
 	"fmt"
 	"sort"
 	"strings"
-
-	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	input := common.SplitNewLine(raw)
-	fmt.Println(solve(input))
+func Run(lines []string) {
+	fmt.Println(solve(lines))
 }
 
 func solve(lines []string) (int, int) {
-	partOne := 0
-	scores := []int{}
+	corruptedScore, incompleteScores := 0, []int{}
 	for _, line := range lines {
-		var s stack = []string{}
-		valid := true
+		var pStack stack = []string{}
+		corrupted := false
 		for _, p := range strings.Split(line, "") {
 			if strings.Contains(OPEN_PARENS, p) {
-				s.push(p)
+				pStack.push(p)
 				continue
 			}
 			if strings.Contains(CLOSE_PARENS, p) {
-				if !s.empty() {
-					last := s.pop()
-					if PAREN_MAP[last] == p {
-						continue
-					}
+				if !pStack.empty() && PAREN_MAP[pStack.pop()] == p {
+					continue
 				}
-				partOne += ERROR_SCORE_MAP[p]
-				valid = false
+				corruptedScore += CORRUPTED_SCORE_MAP[p]
+				corrupted = true
 				break
 			}
 		}
-		if valid {
-			score := 0
-			for !s.empty() {
-				score = (score * 5) + CLOSE_SCORE_MAP[s.pop()]
+		if !corrupted {
+			incompleteScore := 0
+			for !pStack.empty() {
+				incompleteScore = (incompleteScore * 5) + INCOMPLETE_SCORE_MAP[pStack.pop()]
 			}
-			scores = append(scores, score)
+			incompleteScores = append(incompleteScores, incompleteScore)
 		}
 	}
-	sort.Ints(scores)
-	partTwo := scores[len(scores)/2]
-	return partOne, partTwo
+	sort.Ints(incompleteScores)
+	return corruptedScore, incompleteScores[len(incompleteScores)/2]
 }
 
 type stack []string
@@ -75,13 +67,13 @@ var (
 		"[": "]",
 		"<": ">",
 	}
-	ERROR_SCORE_MAP = map[string]int{
+	CORRUPTED_SCORE_MAP = map[string]int{
 		")": 3,
 		"]": 57,
 		"}": 1197,
 		">": 25137,
 	}
-	CLOSE_SCORE_MAP = map[string]int{
+	INCOMPLETE_SCORE_MAP = map[string]int{
 		"(": 1,
 		"[": 2,
 		"{": 3,

@@ -9,8 +9,8 @@ import (
 	"github.com/yacinelakel/aoc-2021/common"
 )
 
-func Run(raw string) {
-	input := common.SliceAtoi(strings.Split(raw, ","))
+func Run(lines []string) {
+	input := common.SliceAtoi(strings.Split(lines[0], ","))
 	sort.Ints(input)
 
 	minFuel1, minFuel2 := math.MaxInt, math.MaxInt
