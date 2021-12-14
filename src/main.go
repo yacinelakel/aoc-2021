@@ -11,6 +11,7 @@ import (
 	"github.com/yacinelakel/aoc-2021/day11"
 	"github.com/yacinelakel/aoc-2021/day12"
 	"github.com/yacinelakel/aoc-2021/day13"
+	"github.com/yacinelakel/aoc-2021/day14"
 	"github.com/yacinelakel/aoc-2021/day2"
 	"github.com/yacinelakel/aoc-2021/day3"
 	"github.com/yacinelakel/aoc-2021/day4"
@@ -35,6 +36,7 @@ var DayRunners = map[int]func([]string){
 	11: day11.Run,
 	12: day12.Run,
 	13: day13.Run,
+	14: day14.Run,
 }
 
 func main() {
